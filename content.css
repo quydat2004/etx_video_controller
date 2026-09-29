@@ -1,0 +1,150 @@
+/* Universal Video Controller (UVC) Styling */
+
+/* =========================================================
+   1. OSD Toast Notification (Hiển thị thông báo trên màn hình)
+   ========================================================= */
+#uvc-osd-toast {
+  position: fixed;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px) scale(0.96);
+  z-index: 2147483647 !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 9999px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  white-space: nowrap;
+}
+
+#uvc-osd-toast.uvc-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+#uvc-osd-toast .uvc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: #38bdf8; /* Cyan accent */
+}
+
+#uvc-osd-toast .uvc-value {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+#uvc-osd-toast .uvc-sub {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  font-size: 13px;
+  margin-left: 2px;
+}
+
+/* =========================================================
+   2. Floating HUD Controller (Thanh điều khiển trên Video)
+   ========================================================= */
+.uvc-floating-hud {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2147483640 !important;
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 4px 6px;
+  gap: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  user-select: none;
+  cursor: default;
+}
+
+/* Khi hover container video hoặc khi người dùng di chuột vào HUD */
+.uvc-video-container:hover .uvc-floating-hud,
+.uvc-floating-hud:hover,
+.uvc-floating-hud.uvc-force-show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Các nút trong HUD */
+.uvc-hud-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f1f5f9;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  line-height: 1;
+}
+
+.uvc-hud-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #38bdf8;
+  transform: scale(1.06);
+}
+
+.uvc-hud-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Nhãn tốc độ ở giữa HUD */
+.uvc-hud-speed {
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  padding: 4px 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 44px;
+  text-align: center;
+  transition: background 0.15s ease;
+}
+
+.uvc-hud-speed:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+/* Nút đóng/ẩn HUD */
+.uvc-hud-close {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  padding: 3px 5px;
+}
+
+.uvc-hud-close:hover {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.15);
+}

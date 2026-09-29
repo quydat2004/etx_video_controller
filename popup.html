@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Controller</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-area">
+        <div class="logo-icon">⚡</div>
+        <div class="title-group">
+          <h1>Video Controller</h1>
+          <span id="video-status" class="status-badge no-video">Đang tìm video...</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Speed Control Display -->
+    <section class="speed-section">
+      <div class="speed-display">
+        <button id="btn-decrease" class="btn-circle" title="Giảm tốc độ (Phím C)">-</button>
+        <div class="speed-value-wrapper">
+          <span id="speed-display" class="speed-number">1.00</span>
+          <span class="speed-unit">x</span>
+        </div>
+        <button id="btn-increase" class="btn-circle" title="Tăng tốc độ (Phím V)">+</button>
+      </div>
+
+      <!-- Speed Slider -->
+      <div class="slider-wrapper">
+        <input type="range" id="speed-slider" min="0.25" max="4.0" step="0.05" value="1.0">
+        <div class="slider-labels">
+          <span>0.25x</span>
+          <span>1.0x</span>
+          <span>2.0x</span>
+          <span>4.0x</span>
+        </div>
+      </div>
+
+      <!-- Quick Preset Buttons -->
+      <div class="preset-grid">
+        <button class="btn-preset" data-speed="0.5">0.5x</button>
+        <button class="btn-preset" data-speed="0.75">0.75x</button>
+        <button class="btn-preset active" data-speed="1.0">1.0x</button>
+        <button class="btn-preset" data-speed="1.25">1.25x</button>
+        <button class="btn-preset" data-speed="1.5">1.5x</button>
+        <button class="btn-preset" data-speed="1.75">1.75x</button>
+        <button class="btn-preset" data-speed="2.0">2.0x</button>
+        <button class="btn-preset" data-speed="2.5">2.5x</button>
+      </div>
+    </section>
+
+    <!-- Seek & Playback Controls -->
+    <section class="seek-section">
+      <div class="seek-controls">
+        <button id="btn-seek-back-10" class="btn-seek" title="Tua lùi 10s">« 10s</button>
+        <button id="btn-seek-back-5" class="btn-seek" title="Tua lùi 5s (Phím Z)">« 5s</button>
+        <button id="btn-toggle-play" class="btn-seek btn-play" title="Tạm dừng / Phát">▶ / ⏸</button>
+        <button id="btn-seek-forward-5" class="btn-seek" title="Tua tới 5s (Phím X)">5s »</button>
+        <button id="btn-seek-forward-10" class="btn-seek" title="Tua tới 10s">10s »</button>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="settings-section">
+      <label class="switch-row">
+        <span>Ghi nhớ tốc độ cho video sau</span>
+        <input type="checkbox" id="chk-remember-speed">
+        <span class="switch-slider"></span>
+      </label>
+
+      <label class="switch-row">
+        <span>Hiện nút điều khiển trên video</span>
+        <input type="checkbox" id="chk-show-hud" checked>
+        <span class="switch-slider"></span>
+      </label>
+    </section>
+
+    <!-- Hotkeys Reference (Accordion) -->
+    <details class="hotkeys-details">
+      <summary>⌨️ Danh sách phím tắt nhanh</summary>
+      <div class="hotkeys-table">
+        <div class="hotkey-row"><kbd>Z</kbd><span>Tua lùi 5s <small>(Shift+Z: 10s)</small></span></div>
+        <div class="hotkey-row"><kbd>X</kbd><span>Tua tới 5s <small>(Shift+X: 10s)</small></span></div>
+        <div class="hotkey-row"><kbd>C</kbd> / <kbd>[</kbd><span>Giảm tốc độ (-0.25x)</span></div>
+        <div class="hotkey-row"><kbd>V</kbd> / <kbd>]</kbd><span>Tăng tốc độ (+0.25x)</span></div>
+        <div class="hotkey-row"><kbd>R</kbd><span>Đặt lại 1.00x chuẩn</span></div>
+        <div class="hotkey-row"><kbd>G</kbd><span>Chuyển nhanh 1.0x ↔ 2.0x</span></div>
+        <div class="hotkey-row"><kbd>B</kbd><span>Ẩn/Hiện thanh nút trên video</span></div>
+      </div>
+    </details>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
