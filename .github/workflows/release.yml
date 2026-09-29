@@ -1,0 +1,28 @@
+name: Build and Release Extension
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Extension ZIP package
+        run: |
+          zip -r universal-video-controller.zip manifest.json content.js content.css popup.html popup.js popup.css icons/ -x "*.git*"
+
+      - name: Upload ZIP to Release Assets
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: universal-video-controller.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
